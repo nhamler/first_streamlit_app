@@ -3,7 +3,7 @@ import requests
 import pandas
 import snowflake.connector
 from urllib.error import URLError
-streamlit.title('My Parents New Healthy Diner')
+streamlit.title('View Our Fruit List - Add Your Favorites!')
 streamlit.header('Breakfast Menu')
 streamlit.text('🥣 Omega 3 & Blueberry Oatmeal')
 streamlit.text('🥗 Kale, Spinach & Rocket Smoothie')
@@ -44,7 +44,6 @@ if streamlit.button('Get Fruit Load List'):
 
 def insert_row_snowflake(new_fruit):
   with my_cnx.cursor() as my_cur:
-    my_cur.execute("insert into fruit_load_list values ('from streamlit')")
     my_cur.execute("insert into fruit_load_list values ('" + new_fruit + "')")
     return "Thanks for adding " + new_fruit
 
